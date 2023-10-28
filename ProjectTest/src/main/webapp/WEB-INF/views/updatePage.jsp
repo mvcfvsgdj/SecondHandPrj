@@ -68,10 +68,10 @@
     <input type="text" name="phone_num" id="phone_num" value="<%= selectedUser.getPhone_num() %>" required>
 <!-- 주소 -->
     <label for="member_post">Member Post:</label>
-    <input type="text" name="member_post" id="member_post" value="<%= selectedUser.getMember_post() %>" required>
+    <input type="text" name="member_post" id="member_post" value="<%= selectedUser.getMember_post() %>"readonly required>
 
     <label for="member_addr">Member Address:</label>
-    <input type" name="member_addr" id="member_addr" value="<%= selectedUser.getMember_addr() %>" required>
+    <input type" name="member_addr" id="member_addr" value="<%= selectedUser.getMember_addr() %>"readonly required>
     
     		<button type="button" onclick="findAddr()">주소찾기</button>
     
@@ -80,7 +80,7 @@
     <input type="text" name="detailed_address" id="detailed_address" value="<%= selectedUser.getDetailed_address() %>" required>
 
     <label for="user_birth">Birthdate:</label>
-    <input type="text" name="user_birth" id="user_birth" value="<%= selectedUser.getUser_birth() %>" required>
+    <input type="text" name="user_birth" id="user_birth" value="<%= selectedUser.getUser_birth() %>"readonly required>
 
     <label for="user_nickname">Nickname:</label>
     <input type="text" name="user_nickname" id="user_nickname" value="<%= selectedUser.getUser_nickname() %>"readonly required>

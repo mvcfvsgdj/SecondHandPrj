@@ -34,47 +34,42 @@
 	
 	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-    $(document).ready(function () {
-        let isPasswordShown = false;
+        $(document).ready(function () {
+        	$("#showPasswordCheckbox").on("change", function () {
+    			let isChecked = $(this).is(":checked");
+    			let type = isChecked ? "text" : "password";
+    			$("#user_pw, #user_pw_confirm").attr("type", type);
+    		});
 
-        $("#showPasswordCheckbox").on("change", function () {
-            isPasswordShown = !isPasswordShown;
-            if (isPasswordShown) {
-                $("input[type='password']").attr("type", "text");
-            } else {
-                $("input[type='password']").attr("type", "password");
-            }
-        });
+            $("#user_pw, #user_pw_confirm").on("keyup", function () {
+                let pass1 = $("#user_pw").val();
+                let pass2 = $("#user_pw_confirm").val();
 
-        $("#validatePassword").on("click", function () {
-            let pass1 = $("#user_pw").val();
-            let pass2 = $("#user_pw_confirm").val();
-
-            if (pass1 !== "" || pass2 !== "") {
-                if (
-                    pass1.length >= 8 &&
-                    /[a-z]/.test(pass1) &&
-                    /[0-9]/.test(pass1) &&
-                    /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(pass1) &&
-                    /^\S*$/.test(pass1)
-                ) {
-                    if (pass1 === pass2) {
-                        $("#checkPw").html("비밀번호가 일치합니다.");
-                        $("#checkPw").css("color", "green");
+                if (pass1 !== "" || pass2 !== "") {
+                    if (
+                        pass1.length >= 8 &&
+                        /[a-zA-Z]/.test(pass1) &&
+                        /[0-9]/.test(pass1) &&
+                        /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(pass1) &&
+                        /^\S*$/.test(pass1)
+                    ) {
+                        if (pass1 === pass2) {
+                            $("#checkPw").html("비밀번호가 일치합니다.");
+                            $("#checkPw").css("color", "green");
+                        } else {
+                            $("#checkPw").html("비밀번호가 일치하지 않습니다.");
+                            $("#checkPw").css("color", "red");
+                        }
                     } else {
-                        let message = "비밀번호가 일치하지 않습니다.";
-                        $("#checkPw").html(message);
+                        $("#checkPw").html(
+                            "비밀번호는 영어, 숫자, 특수문자를 포함해 총 8글자 이상이어야 합니다."
+                            + "<br>"+"단, 공백은 안됩니다."
+                        );
                         $("#checkPw").css("color", "red");
-                        alert(message);
                     }
-                } else {
-                    let message = "비밀번호는 영어, 숫자, 특수문자를 포함해 총 8글자 이상이어야 합니다. 단, 공백은 안됩니다.";
-                    $("#checkPw").html(message);
-                    $("#checkPw").css("color", "red");
                 }
-            }
+            });
         });
-    });
     </script>
 	
 	
@@ -99,14 +94,12 @@
         <input type="text" id="user_id" name="user_id" value="아이디"><br>
         
         <label for="user_pw">비밀번호:</label>
-        <input type="password" id="user_pw" name="user_pw" value=""><br>
-        <label for="user_pw_confirm">비밀번호 재확인:</label>
-        <input type="password" id="user_pw_confirm" name="user_pw_confirm" value=""><br>
-        <div id="checkPw"></div><br>
-        <input type="checkbox" id="showPasswordCheckbox">
-        <label for="showPasswordCheckbox">비밀번호 보기</label><br>
-
-
+		<input type="password" id="user_pw" name="user_pw" value=""><br>
+		<label for="user_pw_confirm">비밀번호 재확인:</label>
+		<input type="password" id="user_pw_confirm" name="user_pw_confirm" value=""><br>
+		<div id="checkPw"></div><br>
+		<input type="checkbox" id="showPasswordCheckbox">
+		<label for="showPasswordCheckbox">비밀번호 보기</label><br>
         
         <label for="address">이메일:</label>
         <input type="text" id="address" name="address" value="이메일">

@@ -135,7 +135,7 @@
 	
 	$(document).ready(function () {
 	    $('#myForm12').submit(function (e) {
-	    	let fields = ['#user_id', '#user_pw', '#user_pw_confirm', '#address', '#phone_num', '#member_post', '#member_addr', '#detailed_address', '#user_birth', '#user_nickname', '#user_image'];
+	    	let fields = ['#user_id', '#user_pw', '#user_pw_confirm', '#address', '#phone_num', '#member_post', '#member_addr', '#detailed_address', '#user_birth', '#user_nickname'];
 
 	        for (let i = 0; i < fields.length; i++) {
 	            if ($(fields[i]).val() === '') {

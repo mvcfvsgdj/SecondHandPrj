@@ -1,3 +1,4 @@
 .metadata/
 Servers/
-testing/*.properties
+testing/
+*.properties
